@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,6 +26,31 @@ namespace Tetris
                 p.Draw();
             }
         }
+
+        /// <summary>
+        /// Движение фигуры по заданному направлению 
+        /// </summary>
+        /// <param name="dir">Направление сдвига фигуры</param>
+        public void Move(Direction dir)
+        {
+            foreach(var p in _points)
+            {
+                p.Move(dir);
+            }
+        }
+
+        /// <summary>
+        /// Скрывает фигуру в консоли
+        /// </summary>
+        public void Hide()
+        {
+            foreach(var p in _points)
+            {
+                p.Hide();
+            }
+        }
+
+       
 
 
 

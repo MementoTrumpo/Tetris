@@ -10,6 +10,11 @@ namespace Tetris
     public class Point
     {
         /// <summary>
+        /// Размер сдвига точки
+        /// </summary>
+        private const int SHIFT_SIZE = 1;
+
+        /// <summary>
         /// Позиция по оси X
         /// </summary>
         public int X { get; set; }
@@ -43,6 +48,35 @@ namespace Tetris
             Console.SetCursorPosition(X, Y);
             Console.Write(Symbol);
 
+        }
+
+        /// <summary>
+        /// Сдвигает точку на заданную координату
+        /// </summary>
+        public void Move(Direction dir)
+        {
+            switch (dir)
+            {
+                case Direction.DOWN:
+                    Y += SHIFT_SIZE;
+                    break;
+                case Direction.LEFT:
+                    X -= SHIFT_SIZE;
+                    break;
+                case Direction.RIGHT:
+                    X += SHIFT_SIZE;
+                    break;
+            }
+
+        }
+
+        /// <summary>
+        /// Скрывает точку
+        /// </summary>
+        public void Hide()
+        {
+            Console.SetCursorPosition(X, Y);
+            Console.Write(" ");
         }
     }
 }

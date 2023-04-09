@@ -11,30 +11,37 @@ namespace Tetris
         static void Main(string[] args)
         {
             InitializationApplication();
-
-            Point p = new Point(2, 3, '#');
-            Square s = new Square(2, p);
-
-            //s.Draw();
-
-            //Point p1 = new Point(45, 10, '#');
-            //s = new Square(3, p1);
-
-            //s.Draw();
+            Console.WriteLine(Console.WindowHeight);
+            Console.WriteLine(Console.WindowWidth);
+            Console.WriteLine(Console.BufferHeight);
+            Console.WriteLine(Console.BufferWidth);
+            Console.WriteLine(Console.LargestWindowHeight);
+            Console.WriteLine(Console.LargestWindowWidth);
 
             Stick stick = new Stick(new Point(4, 10, '#'));
             stick.Draw();
 
+            Random rand = new Random();
+
+            //Shape[] shapes = new Shape[3];
+            //for(int i = 0; i < shapes.Length; i++)
+            //{
+            //    shapes[i] = new Square(new Point(rand.Next(1, 10), rand.Next(4, 18), '#')) ;
+            //    shapes[i].Draw();
+            //}
+
+            Shape square = new Square(new Point(rand.Next(2, 22), rand.Next(4, 22), '#'));
+            for(int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(100);
+
+                square.Hide();
+                square.Move(Direction.DOWN);
+                square.Draw();
 
 
-            //Program main = new Program();
-            //TimerCallback timerCallback = new TimerCallback(MovingSquare);
-            //// Create a Timer object that knows to call our TimerCallback
-            //// method once every 2000 milliseconds.
-            //main._timer = new Timer(timerCallback, s, 0, 1000);
-            //// Wait for the user to hit <Enter>
+            }
 
-          
             Console.ReadLine();
 
         }
@@ -60,9 +67,7 @@ namespace Tetris
             //Refresh();
 
             Square square = (Square)s;
-            square.Refresh();
-            square.Draw();
-            square.Move();
+            
             //square.Refresh();
 
             
@@ -81,13 +86,7 @@ namespace Tetris
 
             Console.SetWindowSize(consoleWidth, consoleHeight);
             Console.SetBufferSize(consoleWidth, consoleHeight);
-            Point initialPoint = new Point
-            {
-                X = Console.GetCursorPosition().Left,
-                Y = Console.GetCursorPosition().Top,
-                Symbol = '-'
-            };
-           
+
 
             DrawingFieldBoundaries(consoleWidth, consoleHeight);
         }
