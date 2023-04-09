@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-    internal class Point
+    public class Point
     {
         /// <summary>
         /// Позиция по оси X
@@ -29,6 +29,10 @@ namespace Tetris
             X = x;
             Y = y;
             Symbol = symbol;
+        }
+
+        public Point()
+        {
         }
 
         /// <summary>
